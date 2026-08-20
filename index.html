@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TM Sweets | Royal Artisanal Sweets, Confectionery & Luxury Chocolates</title>
+  <meta name="description" content="Welcome to TM Sweets. Discover our 24K Gold Kaju Katli, Chocolate-Enrobed Mysore Pak, single-origin dark chocolates, Marc de Champagne truffles, and festive royal hampers." />
+  <meta name="keywords" content="TM Sweets, TM Royal Mithai, TM Chocolates, 24K Gold Kaju Katli, Artisanal Sweets, Luxury Gift Boxes" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. SITE HEADER & NAVIGATION
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- TM Sweets Brand Logo with Regal Monogram Crest -->
+      <a href="#home" class="brand-logo-wrap" aria-label="TM Sweets Home">
+        <div class="tm-brand-crest" title="TM Royal Emblem">
+          <span class="tm-monogram-text">TM</span>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title"><span class="tm-gold-sparkle">TM</span> SWEETS</span>
+          <span class="brand-subtitle">ROYAL CONFECTIONERY &amp; CACAO</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="desktop-nav">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#shop" class="nav-link">Sweets &amp; Chocolates</a></li>
+          <li><a href="#story" class="nav-link">TM Heritage</a></li>
+          <li><a href="#reviews" class="nav-link">Patron Reviews</a></li>
+          <li><a href="#contact" class="nav-link">Ateliers &amp; Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Right Action Group -->
+      <div class="header-actions">
+        <!-- Live Multi-Currency Switcher -->
+        <div class="currency-select-wrap" title="Switch Pricing Currency">
+          <i data-lucide="coins" style="width:16px; height:16px;"></i>
+          <select id="currencySelector" aria-label="Currency Selector">
+            <option value="INR">₹ INR</option>
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
+            <option value="GBP">£ GBP</option>
+          </select>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button class="header-icon-btn" id="openWishlistBtn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'}); window.ui.showToast('Viewing your TM Sweets favorites! ❤️', 'info');" title="Wishlist" aria-label="View Wishlist">
+          <i data-lucide="heart" style="width:18px; height:18px;"></i>
+          <span class="badge-counter" id="wishlistBadgeCount">0</span>
+        </button>
+
+        <!-- Cart Trigger Button -->
+        <button class="header-cart-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+          <i data-lucide="shopping-bag" style="width:18px; height:18px;"></i>
+          <span>Bag</span>
+          <span class="badge-counter" id="cartBadgeCount">0</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger-btn" id="mobileMenuToggleBtn" aria-label="Open navigation menu" aria-expanded="false">
+          <i data-lucide="menu" style="width:22px; height:22px;"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. MOBILE NAVIGATION DRAWER
+       ======================================================================== -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-header">
+      <div class="brand-logo-wrap">
+        <div class="tm-brand-crest" style="width:40px; height:40px;">
+          <span class="tm-monogram-text" style="font-size:1.2rem;">TM</span>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title" style="font-size:1.15rem;"><span class="tm-gold-sparkle">TM</span> SWEETS</span>
+        </div>
+      </div>
+      <button class="mobile-nav-close" id="closeMobileNavBtn" aria-label="Close navigation menu">
+        <i data-lucide="x" style="width:20px; height:20px;"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link"><span>Home</span> <i data-lucide="chevron-right"></i></a></li>
+      <li><a href="#shop" class="mobile-nav-link"><span>Sweets &amp; Chocolates</span> <i data-lucide="chevron-right"></i></a></li>
+      <li><a href="#story" class="mobile-nav-link"><span>The TM Heritage</span> <i data-lucide="chevron-right"></i></a></li>
+      <li><a href="#reviews" class="mobile-nav-link"><span>Patron Reviews</span> <i data-lucide="chevron-right"></i></a></li>
+      <li><a href="#contact" class="mobile-nav-link"><span>Ateliers &amp; Contact</span> <i data-lucide="chevron-right"></i></a></li>
+    </ul>
+
+    <div class="mobile-nav-footer">
+      <button class="btn-primary" id="mobileOpenCartBtn" style="width:100%;">
+        <i data-lucide="shopping-bag"></i> View TM Bag (<span id="mobileCartBadgeCount">0</span>)
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       3. HERO SECTION
+       ======================================================================== -->
+  <main id="main-content">
+    <section class="hero-section" id="home">
+      <div class="hero-particles"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="section-tag-gold">
+            <i data-lucide="crown" style="width:14px; height:14px; color:var(--gold-light);"></i>
+            <span>TM Royal Heritage • Pure Ghee Sweets &amp; Grand Cru Cacao</span>
+          </div>
+
+          <h1 class="hero-title">
+            THE ROYAL ART OF <br />
+            <span class="text-gold-gradient">TM SWEETS &amp;</span> <br />
+            VELVET CONFECTIONERY.
+          </h1>
+
+          <p class="hero-description">
+            Experience the royal confluence of 24K Gold-leaf Kaju Katli, slow-roasted Desi Ghee Mysore Pak, single-origin 85% dark chocolates, and luxurious Marc de Champagne truffles by <strong>TM Sweets</strong>.
+          </p>
+
+          <div class="hero-cta-cluster">
+            <a href="#shop" class="btn-primary">
+              <i data-lucide="shopping-bag" style="width:18px; height:18px;"></i>
+              <span>Explore TM Collection</span>
+            </a>
+            <button class="btn-secondary" onclick="window.ui.openQuickView('tm-sweet-01')">
+              <i data-lucide="sparkles" style="width:18px; height:18px;"></i>
+              <span>24K Gold Katli Special</span>
+            </button>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat-box">
+              <span class="hero-stat-num">50+</span>
+              <span class="hero-stat-lbl">Years of Royal Craft</span>
+            </div>
+            <div class="hero-stat-box">
+              <span class="hero-stat-num">100%</span>
+              <span class="hero-stat-lbl">Pure Desi Ghee &amp; Cacao</span>
+            </div>
+            <div class="hero-stat-box">
+              <span class="hero-stat-num">4.9★</span>
+              <span class="hero-stat-lbl">Connoisseur Acclaim</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase Card -->
+        <div class="hero-visual-col">
+          <div class="hero-visual-card">
+            <div class="hero-card-header-badge">
+              <i data-lucide="crown" style="width:14px; height:14px;"></i>
+              <span>TM Signature Masterpiece</span>
+            </div>
+
+            <div class="hero-image-wrap">
+              <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80" alt="TM 24K Gold Leaf Kaju Katli" />
+            </div>
+
+            <div class="hero-card-caption">
+              <h4>TM 24K Pure Gold Leaf Kaju Katli</h4>
+              <p>Finest Goan cashews stone-ground with Kashmiri saffron, natural cardamom, and crowned with edible 24K gold foil.</p>
+              <div style="display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-family:var(--font-serif); font-size:1.4rem; font-weight:800; color:var(--gold-light);">₹1,557 ($18.00)</span>
+                <button class="btn-primary" style="padding:8px 16px; font-size:0.85rem;" onclick="window.cart.addItem('tm-sweet-01', 1)">
+                  <i data-lucide="plus" style="width:16px; height:16px;"></i> Add to Bag
+                </button>
+              </div>
+            </div>
+
+            <div class="hero-floating-chip">
+              <span class="chip-icon">👑</span>
+              <div class="chip-text">
+                <strong>TM Heritage Batch</strong>
+                <small>Pure Saffron &amp; Cashew</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. SHOP & PRODUCT SHOWCASE SECTION
+         ======================================================================== -->
+    <section class="shop-section" id="shop">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="center-flex text-center" style="margin-bottom: 30px;">
+          <span class="section-tag-gold">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i> TM Grand Confectionery Catalog
+          </span>
+          <h2 class="section-title">Royal Sweets &amp; <span class="text-gold-gradient">Artisanal Chocolates</span></h2>
+          <p class="section-subtitle">
+            Filter by royal sweets, single-origin cacao percentages, dietary preferences, or search our celebrated creations.
+          </p>
+        </div>
+
+        <!-- Filter & Search Dashboard -->
+        <div class="filter-dashboard-panel" id="filter-dashboard">
+          <!-- Top Row: Search, Cocoa Slider, Sort -->
+          <div class="filter-top-bar">
+            <!-- Instant Search Input -->
+            <div class="search-input-wrap">
+              <i data-lucide="search" style="width:18px; height:18px;"></i>
+              <input type="text" id="productSearchInput" placeholder="Search TM Sweets (e.g. Kaju Katli, Mysore Pak, Dark 85%, Truffles)..." aria-label="Search sweets and chocolates" />
+              <button class="clear-search-btn" id="clearSearchBtn" title="Clear search" aria-label="Clear search input">×</button>
+            </div>
+
+            <!-- Cocoa Slider (if filtering chocolate) -->
+            <div class="cocoa-slider-box">
+              <div class="cocoa-slider-header">
+                <span>Chocolate Cacao Intensity</span>
+                <strong id="cocoaFilterVal">All Intensities</strong>
+              </div>
+              <input type="range" min="0" max="90" step="5" value="0" class="cocoa-range-slider" id="cocoaFilterSlider" aria-label="Filter by cocoa percentage" />
+            </div>
+
+            <!-- Sort Select -->
+            <div class="sort-select-box">
+              <i data-lucide="arrow-up-down" style="width:18px; height:18px;"></i>
+              <select id="productSortSelect" aria-label="Sort products">
+                <option value="featured">Featured TM Selections</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low (Luxury)</option>
+                <option value="rating-desc">Highest Customer Rating</option>
+                <option value="cocoa-desc">Highest Cocoa % (Chocolates)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Middle Row: Category Tab Pills -->
+          <div class="category-tabs-row" role="tablist">
+            <button class="cat-tab-btn active" data-category="all" role="tab">All TM Creations</button>
+            <button class="cat-tab-btn" data-category="royal-sweets" role="tab">👑 TM Royal Sweets</button>
+            <button class="cat-tab-btn" data-category="dark" role="tab">Dark Chocolates</button>
+            <button class="cat-tab-btn" data-category="milk" role="tab">Milk Chocolates</button>
+            <button class="cat-tab-btn" data-category="white" role="tab">White &amp; Matcha</button>
+            <button class="cat-tab-btn" data-category="truffles" role="tab">Truffles &amp; Ganache</button>
+            <button class="cat-tab-btn" data-category="gift-boxes" role="tab">Artisanal Gift Hampers</button>
+            <button class="cat-tab-btn" data-category="vegan-keto" role="tab">Sugar-Free &amp; Vegan</button>
+          </div>
+
+          <!-- Bottom Row: Dietary Checkboxes & Counter -->
+          <div class="filter-bottom-bar">
+            <div class="dietary-filters-group">
+              <label class="dietary-checkbox-label">
+                <input type="checkbox" value="Vegetarian" class="dietary-check-box" />
+                <span>🪷 100% Pure Vegetarian</span>
+              </label>
+              <label class="dietary-checkbox-label">
+                <input type="checkbox" value="Royal Heritage" class="dietary-check-box" />
+                <span>👑 Royal Heritage</span>
+              </label>
+              <label class="dietary-checkbox-label">
+                <input type="checkbox" value="Vegan" class="dietary-check-box" />
+                <span>🌿 Vegan</span>
+              </label>
+              <label class="dietary-checkbox-label">
+                <input type="checkbox" value="Gluten-Free" class="dietary-check-box" />
+                <span>🌾 Gluten-Free</span>
+              </label>
+              <label class="dietary-checkbox-label">
+                <input type="checkbox" value="Single-Origin" class="dietary-check-box" />
+                <span>🏔️ Single-Origin Cacao</span>
+              </label>
+            </div>
+
+            <div class="results-count-text" id="filterResultsCount">
+              Showing <strong>16</strong> TM Sweets creations
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="chocolate-grid" id="chocolateProductsGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. OUR CRAFT & STORY SECTION
+         ======================================================================== -->
+    <section class="story-section" id="story">
+      <div class="container">
+        <div class="story-grid">
+          <!-- Story Left Details -->
+          <div>
+            <span class="section-tag-gold">
+              <i data-lucide="crown" style="width:14px; height:14px;"></i> The TM Legacy &amp; Philosophy
+            </span>
+            <h2 class="section-title">Generations of <span class="text-gold-gradient">Purity &amp; Confectionery Mastery</span></h2>
+            <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">
+              <strong>TM Sweets</strong> was founded on an uncompromising principle: honoring timeless traditional recipes with the world's most luxurious ingredients. From pure A2 Desi Ghee and Kashmiri Mamra Almonds to direct-trade Ecuadorian heirloom cacao, each creation is handcrafted with reverence.
+            </p>
+
+            <div class="story-features-list">
+              <div class="story-feature-item">
+                <div class="feature-icon-circle">
+                  <i data-lucide="shield-check"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>100% Pure Desi Cow Ghee &amp; Heritage Saffron</h4>
+                  <p>We source authentic clarified butter from grass-fed mountain pastures and hand-picked saffron stigmas from the valleys of Kashmir.</p>
+                </div>
+              </div>
+
+              <div class="story-feature-item">
+                <div class="feature-icon-circle">
+                  <i data-lucide="clock"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Slow-Conched Fusion Craftsmanship</h4>
+                  <p>Our confectionery masters merge traditional brass-pot roasting with Swiss granite conching, achieving unforgettable textural harmony.</p>
+                </div>
+              </div>
+
+              <div class="story-feature-item">
+                <div class="feature-icon-circle">
+                  <i data-lucide="gift"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Signature Gold Foil Gift Presentation</h4>
+                  <p>Every box is wrapped in velvet emerald cases and stamped with the iconic <strong>TM Royal Crest</strong>, ready for regal gifting.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Story Right Visuals -->
+          <div class="story-images-cluster">
+            <div class="story-img-main">
+              <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80" alt="TM Sweets Royal Gold Confections" />
+            </div>
+            <div class="story-img-sub">
+              <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=800&q=80" alt="TM Artisanal Roasted Nuts" />
+            </div>
+            <div class="story-img-sub">
+              <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80" alt="TM Chocolate Truffles" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. SOMMELIER & PATRON REVIEWS
+         ======================================================================== -->
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="center-flex text-center">
+          <span class="section-tag-gold">
+            <i data-lucide="star" style="width:14px; height:14px;"></i> Patron Acclaim
+          </span>
+          <h2 class="section-title">Words from <span class="text-gold-gradient">Our Connoisseurs</span></h2>
+          <p class="section-subtitle">
+            Cherished by royalty, gourmet chefs, and sweet lovers across India, the UK, Europe, and North America.
+          </p>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Review 1 -->
+          <div class="review-card">
+            <div>
+              <div class="review-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+              <p class="review-quote">
+                "TM Sweets' 24K Gold Leaf Kaju Katli is simply unmatched. The velvety cashew melt combined with genuine saffron and gold leaves makes it the highlight of every festive dinner."
+              </p>
+            </div>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" alt="Dr. Ananya Sundaram" class="author-avatar" />
+              <div class="author-info">
+                <h5>Dr. Ananya Sundaram</h5>
+                <span>Verified Gourmet Collector, Chennai</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="review-card">
+            <div>
+              <div class="review-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+              <p class="review-quote">
+                "The Chocolate Enrobed Ghee Mysore Pak is an absolute genius fusion! The rich buttery aroma of pure cow ghee wrapped in 55% dark chocolate is pure heaven."
+              </p>
+            </div>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="Chef Rajeshwar Rao" class="author-avatar" />
+              <div class="author-info">
+                <h5>Chef Rajeshwar Rao</h5>
+                <span>Executive Culinary Director, Bangalore</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="review-card">
+            <div>
+              <div class="review-stars">
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+                <i data-lucide="star" class="star-filled"></i>
+              </div>
+              <p class="review-quote">
+                "We ordered 100 TM Royal Tasting Vaults for our international delegates. The TM gold seal branding, freshness, and packaging left everyone mesmerized."
+              </p>
+            </div>
+            <div class="review-author">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80" alt="Sophia Al-Mansoor" class="author-avatar" />
+              <div class="author-info">
+                <h5>Sophia Al-Mansoor</h5>
+                <span>Luxury Event Curator, Dubai</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. CONTACT & BOUTIQUE SECTION
+         ======================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="center-flex text-center">
+          <span class="section-tag-gold">
+            <i data-lucide="mail" style="width:14px; height:14px;"></i> TM Sweets Concierge
+          </span>
+          <h2 class="section-title">Grand Ateliers &amp; <span class="text-gold-gradient">Custom Orders</span></h2>
+          <p class="section-subtitle">
+            Need custom monogrammed sweet boxes, wedding tasting hampers, or corporate festive gifting? Our TM Sweets concierge team is at your service.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Details & FAQ -->
+          <div class="contact-info-cards">
+            <div class="boutique-card">
+              <div class="boutique-card-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div class="boutique-card-text">
+                <h4>TM Sweets Flagship Ateliers</h4>
+                <p>108 Anna Salai, Chennai • Indiranagar, Bangalore • 74 Grand 5th Ave, New York</p>
+                <small style="color:var(--gold-light);">Open Daily: 9:00 AM – 9:30 PM</small>
+              </div>
+            </div>
+
+            <div class="boutique-card">
+              <div class="boutique-card-icon">
+                <i data-lucide="phone-call"></i>
+              </div>
+              <div class="boutique-card-text">
+                <h4>TM Sweets Direct Concierge</h4>
+                <p>+91 (044) 4900 8888 / +1 (800) 555-TMSWEETS</p>
+                <small style="color:var(--text-muted);">orders@tmsweets.com • 24/7 Gifting Support</small>
+              </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="faq-wrap">
+              <h3><i data-lucide="help-circle" style="width:18px; height:18px; display:inline-block; vertical-align:middle;"></i> Frequently Asked Questions</h3>
+              <div class="faq-accordion">
+                <div class="faq-item active">
+                  <div class="faq-item-header">
+                    <span>What is the shelf life of TM Sweets and Chocolates?</span>
+                    <i data-lucide="chevron-down" class="faq-icon-arrow"></i>
+                  </div>
+                  <div class="faq-item-body">
+                    Our dry-fruit based royal sweets (Kaju Katli, Pista Rolls) and Dark Chocolates stay pristine for up to 30–45 days at cool room temperature. All orders are packed fresh on the day of dispatch.
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <div class="faq-item-header">
+                    <span>Are all TM Sweets prepared with pure Desi Ghee?</span>
+                    <i data-lucide="chevron-down" class="faq-icon-arrow"></i>
+                  </div>
+                  <div class="faq-item-body">
+                    Yes! We exclusively use 100% pure certified Cow Ghee with zero palm oils, preservatives, or artificial food coloring.
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <div class="faq-item-header">
+                    <span>Do you offer custom wedding &amp; corporate gift hampers?</span>
+                    <i data-lucide="chevron-down" class="faq-icon-arrow"></i>
+                  </div>
+                  <div class="faq-item-body">
+                    Yes, we customize luxury gold-embossed boxes with your family crest, wedding monogram, or company logo. Reach out through our contact form.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="contact-form-panel">
+            <h3>Contact TM Sweets Master Confectioners</h3>
+            <p>We typically respond within 2 hours.</p>
+
+            <form id="boutiqueContactForm">
+              <div class="form-group-grid">
+                <div class="form-group-full">
+                  <label class="form-label" for="contactName">Your Full Name *</label>
+                  <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Rajesh Kannan" required />
+                </div>
+                <div class="form-group-full">
+                  <label class="form-label" for="contactEmail">Email Address *</label>
+                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. rajesh@example.com" required />
+                </div>
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label" for="contactSubject">Inquiry Topic</label>
+                <input type="text" id="contactSubject" name="subject" class="form-input" placeholder="e.g. Wedding Gift Hampers or Bulk Sweets Order" />
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label" for="contactMessage">Your Message *</label>
+                <textarea id="contactMessage" name="message" class="form-input" rows="5" placeholder="Share your message, requested quantities, or delivery date..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">
+                <i data-lucide="send" style="width:18px; height:18px;"></i>
+                <span>Send Message to TM Concierge</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       8. SHOPPING CART SLIDE-OUT DRAWER
+       ======================================================================== -->
+  <div class="drawer-overlay" id="cartDrawerOverlay">
+    <aside class="cart-drawer-panel" aria-label="Shopping Cart">
+      <!-- Drawer Header -->
+      <div class="cart-drawer-header">
+        <div class="cart-header-title-box">
+          <div class="tm-brand-crest" style="width:32px; height:32px; font-size:0.9rem;">
+            <span class="tm-monogram-text" style="font-size:0.95rem;">TM</span>
+          </div>
+          <h3>Your TM Sweets Bag</h3>
+          <span id="cartDrawerItemCount">(0 items)</span>
+        </div>
+        <button class="cart-close-btn" id="closeCartDrawerBtn" aria-label="Close Shopping Bag">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Free Shipping Progress Tracker -->
+      <div class="cart-shipping-banner">
+        <div class="cart-shipping-msg" id="shippingProgressMessage">
+          Add <strong>₹1,900 ($22.00)</strong> more for <strong>Free TM Express Delivery</strong>!
+        </div>
+        <div class="shipping-progress-track">
+          <div class="shipping-progress-fill" id="shippingProgressBarFill"></div>
+        </div>
+      </div>
+
+      <!-- Cart Itemized List -->
+      <div class="cart-items-scroll" id="cartItemsList">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="cart-empty-box" id="cartEmptyState">
+        <div class="cart-empty-icon">👑</div>
+        <h4>Your TM Bag is Empty</h4>
+        <p>Explore our 24K gold sweets, pure ghee Mysore Pak, artisanal truffles, and grand festive hampers.</p>
+        <button class="btn-primary" onclick="window.cart.closeDrawer(); document.getElementById('shop').scrollIntoView({behavior:'smooth'});">
+          <i data-lucide="sparkles"></i> Explore TM Sweets
+        </button>
+      </div>
+
+      <!-- Cart Footer Summary & Checkout Trigger -->
+      <div class="cart-drawer-footer" id="cartDrawerFooter">
+        <!-- Working Promo Code Form -->
+        <form class="promo-form-row" id="cartPromoForm">
+          <div class="promo-input-wrap">
+            <input type="text" id="promoCodeInput" placeholder="Promo code (e.g. TMSWEETS)" aria-label="Promo Code" />
+          </div>
+          <button type="submit" class="promo-apply-btn">Apply</button>
+        </form>
+
+        <!-- Summary Totals Breakdown -->
+        <div class="cart-summary-breakdown">
+          <div class="summary-line-row">
+            <span>Subtotal</span>
+            <strong id="cartSubtotalAmount">₹0</strong>
+          </div>
+          <div class="summary-line-row" id="cartDiscountRow" style="display:none; color:#34d399;">
+            <span id="cartDiscountLabel">Promo Discount</span>
+            <strong id="cartDiscountAmount">-₹0</strong>
+          </div>
+          <div class="summary-line-row">
+            <span>Insulated Express Delivery</span>
+            <strong id="cartShippingAmount">₹562</strong>
+          </div>
+          <div class="summary-line-row">
+            <span>GST / Confectionery Tax (5%)</span>
+            <strong id="cartTaxAmount">₹0</strong>
+          </div>
+          <div class="summary-line-row total-line">
+            <span>Grand Total</span>
+            <strong id="cartGrandTotalAmount">₹0</strong>
+          </div>
+        </div>
+
+        <div class="cart-footer-buttons">
+          <button class="btn-checkout-full" id="proceedToCheckoutBtn">
+            <i data-lucide="lock" style="width:18px; height:18px;"></i>
+            <span>Proceed to Secure Checkout</span>
+          </button>
+          <button class="btn-clear-cart" onclick="window.cart.clearCart()">
+            Clear Shopping Bag
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ========================================================================
+       9. QUICK VIEW SENSORY MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-luxury-window">
+      <button class="modal-close-icon-btn" id="closeQuickViewModalBtn" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+      <div id="quickViewContent">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       10. CHECKOUT MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-luxury-window" style="max-width: 920px;">
+      <button class="modal-close-icon-btn" id="closeCheckoutModalBtn" aria-label="Close Checkout">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="checkout-modal-content">
+        <div class="checkout-grid">
+          <!-- Checkout Form -->
+          <div class="checkout-form-col">
+            <h3><i data-lucide="shield-check" style="color:var(--gold-primary); display:inline-block; vertical-align:middle;"></i> TM Sweets Express Checkout</h3>
+            
+            <form id="checkoutForm">
+              <div class="form-group-full">
+                <label class="form-label" for="checkoutFullName">Full Name *</label>
+                <input type="text" id="checkoutFullName" name="fullName" class="form-input" placeholder="e.g. Rajesh Kannan" required />
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label" for="checkoutEmail">Email Address for Tracking *</label>
+                <input type="email" id="checkoutEmail" name="email" class="form-input" placeholder="rajesh@example.com" required />
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label" for="checkoutAddress">Delivery Address *</label>
+                <input type="text" id="checkoutAddress" name="address" class="form-input" placeholder="Flat 4B, TM Heritage Towers, Anna Nagar" required />
+              </div>
+
+              <div class="form-group-grid">
+                <div class="form-group-full">
+                  <label class="form-label" for="checkoutCity">City *</label>
+                  <input type="text" id="checkoutCity" name="city" class="form-input" placeholder="Chennai" required />
+                </div>
+                <div class="form-group-full">
+                  <label class="form-label" for="checkoutZip">Postal / Pin Code *</label>
+                  <input type="text" id="checkoutZip" name="zip" class="form-input" placeholder="600040" required />
+                </div>
+              </div>
+
+              <div class="form-group-full">
+                <label class="form-label">Payment Method (Simulated)</label>
+                <div style="display:flex; gap:12px; margin-top:4px; flex-wrap:wrap;">
+                  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; cursor:pointer;">
+                    <input type="radio" name="paymentMethod" value="upi" checked accent-color="var(--gold-primary)" />
+                    <span>⚡ Instant UPI (GPay / PhonePe / Paytm)</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; cursor:pointer;">
+                    <input type="radio" name="paymentMethod" value="card" accent-color="var(--gold-primary)" />
+                    <span>💳 Credit / Debit Card</span>
+                  </label>
+                  <label style="display:flex; align-items:center; gap:6px; font-size:0.85rem; cursor:pointer;">
+                    <input type="radio" name="paymentMethod" value="netbanking" accent-color="var(--gold-primary)" />
+                    <span>🏦 NetBanking</span>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width:100%; margin-top:16px;">
+                <i data-lucide="check-circle" style="width:18px; height:18px;"></i>
+                <span>Complete Order &amp; Send Confirmation</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Checkout Sidebar Summary -->
+          <div class="checkout-sidebar-col">
+            <h4 style="font-size:1.1rem; color:var(--gold-light); margin-bottom:10px;">Order Summary</h4>
+            <div class="checkout-summary-scroll" id="checkoutSummaryList">
+              <!-- Rendered dynamically by JS -->
+            </div>
+            <div class="checkout-final-total-row">
+              <span>Total Payable:</span>
+              <span id="checkoutFinalTotal">₹0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       11. ORDER CONFIRMATION CELEBRATION MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="orderConfirmationModal">
+    <div class="modal-luxury-window confirmation-window">
+      <div class="confirm-badge-icon">👑</div>
+      <h2>TM Sweets Order Confirmed!</h2>
+      <p style="color:var(--text-secondary); margin-bottom:8px;">
+        Thank you for choosing <strong>TM Sweets</strong>. Your royal confections are being freshly prepared and safely packed in temperature-controlled boxes.
+      </p>
+
+      <div class="order-num-highlight">
+        Order Reference: <span id="confirmedOrderNumber">TM-892411</span>
+      </div>
+
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:24px;">
+        A confirmation receipt and tracking link have been sent to <strong id="confirmedOrderEmail" style="color:var(--text-main);"></strong>. Total Paid: <strong id="confirmedOrderTotal" style="color:var(--gold-light);"></strong>
+      </p>
+
+      <button class="btn-primary" id="closeConfirmationModalBtn" style="min-width:200px;">
+        <i data-lucide="sparkles"></i> Continue Exploring TM Sweets
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       12. TOAST CONTAINER & SCROLL-TO-TOP BUTTON
+       ======================================================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <button class="scroll-top-btn" id="scrollToTopBtn" title="Scroll to Top" aria-label="Scroll to top of page">
+    <i data-lucide="arrow-up" style="width:20px; height:20px;"></i>
+  </button>
+
+  <!-- ========================================================================
+       13. SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <div class="brand-logo-wrap">
+            <div class="tm-brand-crest">
+              <span class="tm-monogram-text">TM</span>
+            </div>
+            <div class="brand-text-block">
+              <span class="brand-title"><span class="tm-gold-sparkle">TM</span> SWEETS</span>
+              <span class="brand-subtitle">ROYAL CONFECTIONERY &amp; CACAO</span>
+            </div>
+          </div>
+          <p>
+            The pinnacle of Indian royal mithai and European artisanal chocolates. Preserving golden culinary heritage with unmatched purity and passion.
+          </p>
+        </div>
+
+        <!-- Collections -->
+        <div class="footer-col">
+          <h4>TM Signatures</h4>
+          <ul class="footer-links">
+            <li><a href="#shop" onclick="window.productManager.activeCategory='royal-sweets'; window.productManager.applyFilters();">24K Gold Kaju Katli</a></li>
+            <li><a href="#shop" onclick="window.productManager.activeCategory='royal-sweets'; window.productManager.applyFilters();">Chocolate Enrobed Mysore Pak</a></li>
+            <li><a href="#shop" onclick="window.productManager.activeCategory='royal-sweets'; window.productManager.applyFilters();">Royal Cashew Pista Saffron Roll</a></li>
+            <li><a href="#shop" onclick="window.productManager.activeCategory='dark'; window.productManager.applyFilters();">Single-Origin Dark 85% Arriba</a></li>
+            <li><a href="#shop" onclick="window.productManager.activeCategory='gift-boxes'; window.productManager.applyFilters();">TM Royal Gift Hampers</a></li>
+          </ul>
+        </div>
+
+        <!-- Terroirs & Ateliers -->
+        <div class="footer-col">
+          <h4>Our Flagships</h4>
+          <ul class="footer-links">
+            <li><a href="#contact">Chennai Flagship Atelier</a></li>
+            <li><a href="#contact">Bangalore Confectionery Lounge</a></li>
+            <li><a href="#contact">New York Experience Center</a></li>
+            <li><a href="#contact">Zurich Heritage Studio</a></li>
+            <li><a href="#contact">Worldwide Express Shipping</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-col footer-newsletter-box">
+          <h4>TM Sweets Gazette</h4>
+          <p>Subscribe for secret festive reserve releases and get 20% off with promo code <strong>TMSWEETS</strong>.</p>
+          <form class="newsletter-input-group" id="footerNewsletterForm">
+            <input type="email" id="newsletterEmailInput" placeholder="Enter your email" aria-label="Email for Newsletter" required />
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 TM Sweets &amp; Confectionery Private Limited. All rights reserved.</span>
+        <span>Crafted with 👑 &amp; Pure Desi Ghee for Sweet Connoisseurs Worldwide</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts in Order -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/filter-search.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
